@@ -900,6 +900,19 @@ class SCF_Test extends WP_UnitTestCase {
 				)
 			);
 			$Setting->add_group(
+				'for-specific-empty-post-type-string',
+				false,
+				array(
+					array(
+						'name'      => 'text-has-default',
+						'label'     => 'text has default',
+						'type'      => 'text',
+						'default'   => 'a',
+						'post-type' => '',
+					),
+				)
+			);
+			$Setting->add_group(
 				'checkbox',
 				false,
 				array(
