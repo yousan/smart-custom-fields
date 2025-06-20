@@ -904,10 +904,10 @@ class SCF_Test extends WP_UnitTestCase {
 				false,
 				array(
 					array(
-						'name'      => 'text-has-default',
-						'label'     => 'text has default',
-						'type'      => 'relation',
-						'default'   => 'a',
+						'name'    => 'text-has-default',
+						'label'   => 'text has default',
+						'type'    => 'relation',
+						'default' => 'a',
 					),
 				)
 			);
