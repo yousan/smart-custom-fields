@@ -158,7 +158,9 @@ class Smart_Custom_Fields_Field_Related_Posts extends Smart_Custom_Fields_Field_
 		$disabled  = $this->get_disable_attribute( $index );
 		$post_type = $this->get( 'post-type' );
 		$limit     = $this->get( 'limit' );
-
+		if ( ! $post_type ) {
+			$post_type = array( 'post' );
+		}
 		$choices_posts  = array();
 		$posts_per_page = get_option( 'posts_per_page' );
 
