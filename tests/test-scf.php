@@ -906,9 +906,8 @@ class SCF_Test extends WP_UnitTestCase {
 					array(
 						'name'      => 'text-has-default',
 						'label'     => 'text has default',
-						'type'      => 'text',
+						'type'      => 'relation',
 						'default'   => 'a',
-						'post-type' => '',
 					),
 				)
 			);
