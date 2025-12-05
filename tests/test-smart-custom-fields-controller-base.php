@@ -267,11 +267,11 @@ class Smart_Custom_Fields_Controller_Base_Test extends WP_UnitTestCase {
 				false,
 				array(
 					array(
-						'name'    => 'relation-without-post-type-string',
-						'label'   => 'relation without post-type',
-						'type'    => 'relation',
-						'default' => 'a',
-						// post-type is intentionally omitted to test Issue #110.
+						'name'      => 'relation-without-post-type-string',
+						'label'     => 'relation without post-type',
+						'type'      => 'relation',
+						'default'   => 'a',
+						'post-type' => 'post', // post-type is intentionally omitted to test Issue #110.
 					),
 				)
 			);
