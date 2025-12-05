@@ -146,6 +146,24 @@ class Smart_Custom_Fields_Controller_Base_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * @group related_posts_field_without_post_type
+	 * @see https://github.com/inc2734/smart-custom-fields/issues/110
+	 */
+	public function test_related_posts_field_without_post_type() {
+		// Test that get_field() does not throw Fatal error when post-type is not specified.
+		$object = get_post( $this->post_id );
+		$Field  = SCF::get_field( $object, 'relation-without-post-type-string' );
+
+		// This should not throw TypeError: implode(): Argument #2 ($array) must be of type ?array, string given
+		$result = $Field->get_field( 0, array() );
+
+		// Verify that the result is a string (HTML output)
+		$this->assertIsString( $result );
+		// Verify that data-post-types attribute contains 'post' as default
+		$this->assertStringContainsString( 'data-post-types="post"', $result );
+	}
+
+	/**
 	 * Register custom fields using filter hook
 	 *
 	 * @param array  $settings  Array of Smart_Custom_Fields_Setting object.
@@ -241,6 +259,19 @@ class Smart_Custom_Fields_Controller_Base_Test extends WP_UnitTestCase {
 						'label'   => 'repeat checkbox',
 						'type'    => 'check',
 						'choices' => array( 'a', 'b', 'c' ),
+					),
+				)
+			);
+			$Setting->add_group(
+				'relation-without-post-type-string',
+				false,
+				array(
+					array(
+						'name'    => 'relation-without-post-type-string',
+						'label'   => 'relation without post-type',
+						'type'    => 'relation',
+						'default' => 'a',
+						// post-type is intentionally omitted to test Issue #110.
 					),
 				)
 			);
